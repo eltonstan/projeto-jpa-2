@@ -1,5 +1,7 @@
 package br.com.caelum;
 
+import java.util.Arrays;
+
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
+
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import br.com.caelum.model.Categoria;
 import br.com.caelum.model.Loja;
@@ -53,6 +57,7 @@ public class CriadorDeProdutos {
 				cursoDeViolao.setDescricao("Estude com os melhores professores e aprenda no seu ritmo, sem sair de casa.");
 //				cursoDeViolao.adicionarCategorias(tecnologia, musica);
 				cursoDeViolao.setLinkDaFoto("https://pbs.twimg.com/profile_images/378800000825434860/12136ee913ed4f44860914d44650144e.png");
+				cursoDeViolao.setCategorias(Arrays.asList(musica));
 				
 				em.persist(cursoDeViolao);
 				
@@ -70,6 +75,7 @@ public class CriadorDeProdutos {
 											   + "aquele que está adquirindo mais experiência na plataforma.");
 				
 				livroDeArquitetura.setLinkDaFoto("http://www.arquiteturajava.com.br/img/capa-livro.png");
+				livroDeArquitetura.setCategorias(Arrays.asList(tecnologia));
 				
 				em.persist(livroDeArquitetura);
 				
@@ -85,6 +91,7 @@ public class CriadorDeProdutos {
 						+ "transações, programação orientada a aspectos e também o fantástico módulo MVC, o SpringMVC.");
 				
 				livroDeSpring.setLinkDaFoto("http://cdn.shopify.com/s/files/1/0155/7645/products/spring-framework-featured_large.png?v=1411567960");
+				livroDeSpring.setCategorias(Arrays.asList(tecnologia));
 				
 				em.persist(livroDeSpring);
 				
