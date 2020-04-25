@@ -12,6 +12,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.annotations.Cache;
 import org.springframework.stereotype.Repository;
 
 import br.com.caelum.model.Loja;
@@ -59,6 +60,7 @@ public class ProdutoDao {
 		query.where((Predicate[]) predicates.toArray(new Predicate[0]));
 
 		TypedQuery<Produto> typedQuery = em.createQuery(query);
+		typedQuery.setHint("org.hibernate.cacheable", "true");
 		return typedQuery.getResultList();
 
 	}
